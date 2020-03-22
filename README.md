@@ -1,2 +1,2 @@
 # cfn-nag-demo
-details
+
