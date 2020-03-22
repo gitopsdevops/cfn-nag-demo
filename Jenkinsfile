@@ -17,8 +17,8 @@ pipeline {
       stage('Describe EC2 Instance') {
          steps {
             sh '''
-
-            aws ec2 describe-instances --query Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId] --output text
+            
+            aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text
 
             '''
          }
