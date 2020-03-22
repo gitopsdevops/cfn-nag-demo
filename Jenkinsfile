@@ -2,11 +2,16 @@ pipeline {
    agent any
 
    stages {
-      stage('Hello') {
+      stage('CFN-NAG Scan Example') {
          steps {
-            echo 'Hello World'
-            cd /root/cfn_nag_examples/cfn
-            docker run --tty --interactive --rm --name cfn-nag --volume $(pwd):/work  christiangda/cfn-nag --input-path volume.yml
+            sh '''
+            #git clone https://github.com/stelligent/cfn_nag_examples
+            cd cfn_nag_examples/cfn/
+            pwd
+            #sudo docker run --rm --name cfn-nag --volume $(pwd):/work  christiangda/cfn-nag --input-path volume.yml
+            
+            sudo docker run --rm --name cfn-nag --volume $(pwd):/work  christiangda/cfn-nag --input-path volume-encrypted.yml
+            '''
          }
       }
    }
