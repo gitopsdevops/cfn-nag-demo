@@ -1,2 +1,2 @@
 # cfn-nag-demo
-Additional details
+Additional details shall be added here.
