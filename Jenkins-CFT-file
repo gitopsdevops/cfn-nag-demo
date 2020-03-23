@@ -33,18 +33,19 @@ pipeline {
          }
 
          }
+
+       stage('Clean Up CFT Stack') {
+            steps {
+               sh '''
+               sleep 30s
+               aws cloudformation delete-stack --stack-name sample-cft-stack
+               '''
+            }
+
+            }
+         }
+
       }
-
-     stage('Clean Up CFT Stack') {
-        steps {
-           sh '''
-           sleep 30s
-           aws cloudformation delete-stack --stack-name sample-cft-stack
-           '''
-        }
-
-        }
-     }
 
 
     post {
