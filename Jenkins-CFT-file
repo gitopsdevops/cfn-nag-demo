@@ -5,7 +5,7 @@ pipeline {
       stage('CFN-NAG Scan Example') {
          steps {
             sh '''
-            #git clone https://github.com/stelligent/cfn_nag_examples
+            git clone https://github.com/stelligent/cfn_nag_examples
             cd cfn_nag_examples/cfn/
             pwd
             #sudo docker run --rm --name cfn-nag --volume $(pwd):/work  christiangda/cfn-nag --input-path volume.yml
@@ -32,8 +32,19 @@ pipeline {
             '''
          }
 
+         }
       }
-   }
+
+     stage('Clean Up CFT Stack') {
+        steps {
+           sh '''
+           sleep 30s
+           aws cloudformation delete-stack --stack-name sample-cft-stack
+           '''
+        }
+
+        }
+     }
 
 
     post {
