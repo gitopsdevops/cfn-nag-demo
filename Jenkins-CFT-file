@@ -40,12 +40,10 @@ pipeline {
                sleep 30s
                aws cloudformation delete-stack --stack-name sample-cft-stack
                '''
-            }
+               }
 
             }
          }
-
-      }
 
 
     post {
